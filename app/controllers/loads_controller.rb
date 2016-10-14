@@ -26,7 +26,7 @@ class LoadsController < ApplicationController
   def create
     @load = Load.new(load_params)
     if Load.is_valid @load
-      redirect_to @load, notice: 'Error'
+      redirect_to @load, notice: 'Load is not valid'
     else
       respond_to do |format|
         if @load.save

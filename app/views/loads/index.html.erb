@@ -1,0 +1,49 @@
+
+<h1>Load Orders</h1>
+<% if can? :manage, Order %>
+    <%= form_tag(upload_orders_path, :method => 'post', multipart: true) do %>
+        <%= file_field_tag 'csv_file', accept: 'text/csv' %>
+        <%= submit_tag 'Submit' %>
+    <% end %>
+<% end %>
+
+<h1>Loads</h1>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Deliverydate</th>
+      <th>Deliveryshift</th>
+      <th>User</th>
+      <th colspan="7"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @loads.each do |load| %>
+      <tr>
+        <td><%= load.delivery_date %></td>
+        <td><%= load.delivery_shift %></td>
+        <td><%= load.user.name %></td>
+        <% if can? :manage, Order %>
+          <td><%= link_to 'Edit Orders', load_edit_orders_path(load) %></td>
+        <% end %>
+        <% if can? :read, load %>
+          <td><%= link_to 'Download', load_download_path(load) %></td>
+        <% end %>
+        <% if can? :edit, load %>
+          <td><%= link_to 'Edit', edit_load_path(load) %></td>
+        <% end %>
+        <% if can? :destroy, load %>
+          <td><%= link_to 'Destroy', load, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if can? :create, Load %>
+<%= link_to 'New Load', new_load_path %>
+<% end %>
+

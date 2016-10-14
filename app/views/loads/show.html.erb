@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Deliverydate:</strong>
+  <%= @load.delivery_date %>
+</p>
+
+<p>
+  <strong>Deliveryshift:</strong>
+  <%= @load.delivery_shift %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @load.user %>
+</p>
+
+<%= link_to 'Edit', edit_load_path(@load) %> |
+<%= link_to 'Back', loads_path %>

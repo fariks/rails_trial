@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  loads: one
+  deliveryDate: 2016-10-14
+  deliveryShift: MyString
+  originName: MyString
+  originRawLine1: MyString
+  originCity: MyString
+  originState: MyString
+  originZip: MyString
+  originCountry: MyString
+  clientName: MyString
+  destinationRawLine1: MyString
+  destinationCity: MyString
+  destinationState: MyString
+  destinationZip: MyString
+  destinationCountry: MyString
+  phoneNumber: MyString
+  mode: MyString
+  purchaseOrderNumber: 1
+  volume: 1.5
+  handlingUnitQuantity: 1
+  handlingUnitType: MyString
+
+two:
+  loads: two
+  deliveryDate: 2016-10-14
+  deliveryShift: MyString
+  originName: MyString
+  originRawLine1: MyString
+  originCity: MyString
+  originState: MyString
+  originZip: MyString
+  originCountry: MyString
+  clientName: MyString
+  destinationRawLine1: MyString
+  destinationCity: MyString
+  destinationState: MyString
+  destinationZip: MyString
+  destinationCountry: MyString
+  phoneNumber: MyString
+  mode: MyString
+  purchaseOrderNumber: 1
+  volume: 1.5
+  handlingUnitQuantity: 1
+  handlingUnitType: MyString

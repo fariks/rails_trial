@@ -1,0 +1,1 @@
+json.array! @loads_orders, partial: 'loads_orders/loads_order', as: :loads_order

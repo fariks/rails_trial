@@ -1,0 +1,61 @@
+<h1>Listing orders</h1>
+
+<table>
+  <tr>
+    <th>Deliverydate</th>
+    <th>Deliveryshift</th>
+    <th>Originname</th>
+    <th>Originrawline1</th>
+    <th>Origincity</th>
+    <th>Originstate</th>
+    <th>Originzip</th>
+    <th>Origincountry</th>
+    <th>Clientname</th>
+    <th>Destinationrawline1</th>
+    <th>Destinationcity</th>
+    <th>Destinationstate</th>
+    <th>Destinationzip</th>
+    <th>Destinationcountry</th>
+    <th>Phonenumber</th>
+    <th>Mode</th>
+    <th>Purchaseordernumber</th>
+    <th>Volume</th>
+    <th>Handlingunitquantity</th>
+    <th>Handlingunittype</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @orders.each do |order| %>
+  <tr>
+    <td><%= order.deliveryDate %></td>
+    <td><%= order.deliveryShift %></td>
+    <td><%= order.originName %></td>
+    <td><%= order.originRawLine1 %></td>
+    <td><%= order.originCity %></td>
+    <td><%= order.originState %></td>
+    <td><%= order.originZip %></td>
+    <td><%= order.originCountry %></td>
+    <td><%= order.clientName %></td>
+    <td><%= order.destinationRawLine1 %></td>
+    <td><%= order.destinationCity %></td>
+    <td><%= order.destinationState %></td>
+    <td><%= order.destinationZip %></td>
+    <td><%= order.destinationCountry %></td>
+    <td><%= order.phoneNumber %></td>
+    <td><%= order.mode %></td>
+    <td><%= order.purchaseOrderNumber %></td>
+    <td><%= order.volume %></td>
+    <td><%= order.handlingUnitQuantity %></td>
+    <td><%= order.handlingUnitType %></td>
+    <td><%= link_to 'Show', [order.loads, order] %></td>
+    <td><%= link_to 'Edit', edit_loads_order_path(order.loads, order) %></td>
+    <td><%= link_to 'Destroy', [order.loads, order], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Order', new_loads_order_path(params[:loads_id]) %>

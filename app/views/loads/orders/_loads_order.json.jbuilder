@@ -1,0 +1,2 @@
+json.extract! loads_order, :id, :deliveryDate, :deliveryShift, :originName, :originRawLine1, :originCity, :originState, :originZip, :originCountry, :clientName, :destinationRawLine1, :destinationCity, :destinationState, :destinationZip, :destinationCountry, :phoneNumber, :mode, :purchaseOrderNumber, :volume, :handlingUnitQuantity, :handlingUnitType, :created_at, :updated_at
+json.url loads_order_url(loads_order, format: :json)

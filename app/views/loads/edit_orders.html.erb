@@ -1,0 +1,88 @@
+<h1>Assigned orders</h1>
+
+<table class="table table-bordered table-striped" id="sortable">
+  <tr>
+    <th>Deliverydate</th>
+    <th>Deliveryshift</th>
+    <th>Originname</th>
+    <th>Originaddress</th>
+    <th>Clientname</th>
+    <th>Destinationaddress</th>
+    <th>Phonenumber</th>
+    <th>Mode</th>
+    <th>Purchaseordernumber</th>
+    <th>Volume</th>
+    <th>Handlingunitquantity</th>
+    <th>Handlingunittype</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @assignOrders.each do |order| %>
+      <tr data-item-id=<%= "#{order.id}" %> class="item">
+        <td><%= order.deliveryDate %></td>
+        <td><%= order.deliveryShift %></td>
+        <td><%= order.originName %></td>
+        <td><%= order.originRawLine1%>,<%= order.originCity %>,<%= order.originState %>,<%= order.originZip %>,<%= order.originCountry %></td>
+        <td><%= order.clientName %></td>
+        <td><%= order.destinationRawLine1 %>,<%= order.destinationCity %>,<%= order.destinationState %>,<%= order.destinationZip %>,<%= order.destinationCountry %></td>
+        <td><%= order.phoneNumber %></td>
+        <td><%= order.mode %></td>
+        <td><%= order.purchaseOrderNumber %></td>
+        <td><%= order.volume %></td>
+        <td><%= order.handlingUnitQuantity %></td>
+        <td><%= order.handlingUnitType %></td>
+        <td><%= link_to 'Show', [order.load, order] %></td>
+        <td><%= link_to 'Edit', edit_load_order_path(order.load, order) %></td>
+        <td><%= link_to 'Unassign', load_order_unassign_path(order.load, order), :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+  <% end %>
+</table>
+
+<br />
+
+<h1>Unassigned orders</h1>
+
+<table class="table table-bordered table-striped">
+  <tr>
+    <th>Deliverydate</th>
+    <th>Deliveryshift</th>
+    <th>Originname</th>
+    <th>Originaddress</th>
+    <th>Clientname</th>
+    <th>Destinationaddress</th>
+    <th>Phonenumber</th>
+    <th>Mode</th>
+    <th>Purchaseordernumber</th>
+    <th>Volume</th>
+    <th>Handlingunitquantity</th>
+    <th>Handlingunittype</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @unassignOrders.each do |order| %>
+      <tr>
+        <td><%= order.deliveryDate %></td>
+        <td><%= order.deliveryShift %></td>
+        <td><%= order.originName %></td>
+        <td><%= order.originRawLine1%>,<%= order.originCity %>,<%= order.originState %>,<%= order.originZip %>,<%= order.originCountry %></td>
+        <td><%= order.clientName %></td>
+        <td><%= order.destinationRawLine1 %>,<%= order.destinationCity %>,<%= order.destinationState %>,<%= order.destinationZip %>,<%= order.destinationCountry %></td>
+        <td><%= order.phoneNumber %></td>
+        <td><%= order.mode %></td>
+        <td><%= order.purchaseOrderNumber %></td>
+        <td><%= order.volume %></td>
+        <td><%= order.handlingUnitQuantity %></td>
+        <td><%= order.handlingUnitType %></td>
+        <td><%= link_to 'Show', [@load, order] %></td>
+        <td><%= link_to 'Edit', edit_load_order_path(@load, order) %></td>
+        <td><%= link_to 'Assign', load_order_assign_path(@load, order), :method => :post %></td>
+      </tr>
+  <% end %>
+</table>
+
+<br />
+<%= link_to 'Back', loads_path %>

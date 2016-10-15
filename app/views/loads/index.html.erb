@@ -1,13 +1,12 @@
 
-<h1>Load Orders</h1>
+<h2>Load Orders</h2>
 <% if can? :manage, Order %>
     <%= form_tag(upload_orders_path, :method => 'post', multipart: true) do %>
-        <%= file_field_tag 'csv_file', accept: 'text/csv' %>
-        <%= submit_tag 'Submit' %>
+        <%= file_field_tag 'csv_file', accept: 'text/csv', class: 'btn' %>
+        <%= submit_tag 'Submit', class: 'btn' %>
     <% end %>
 <% end %>
 
-<p id="notice"><%= notice %></p>
 <h1>Loads</h1>
 
 <table class="table table-bordered table-striped">

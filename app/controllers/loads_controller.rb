@@ -25,17 +25,14 @@ class LoadsController < ApplicationController
   # POST /loads.json
   def create
     @load = Load.new(load_params)
-    if Load.is_valid @load
-      redirect_to @load, notice: 'Load is not valid'
-    else
-      respond_to do |format|
-        if @load.save
-          format.html { redirect_to @load, notice: 'Load was successfully created.' }
-          format.json { render :show, status: :created, location: @load }
-        else
-          format.html { render :new }
-          format.json { render json: @load.errors, status: :unprocessable_entity }
-        end
+
+    respond_to do |format|
+      if @load.save
+        format.html { redirect_to @load, notice: 'Load was successfully created.' }
+        format.json { render :show, status: :created, location: @load }
+      else
+        format.html { render :new }
+        format.json { render json: @load.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -72,11 +69,12 @@ class LoadsController < ApplicationController
 
   def download
     @load = Load.find(params[:load_id])
-    res = 'delivery_date,delivery_shift,origin_name,origin_raw_line_1,origin_city,origin_state,origin_zip,origin_country,client_name,destination_raw_line_1,destination_city,destination_state,destination_zip,destination_country,phone_number,mode,purchase_order_number,volume,handling_unit_quantity,handling_unit_type \n'
+    res = StringIO.new
+    res.puts "delivery_date,delivery_shift,origin_name,origin_raw_line_1,origin_city,origin_state,origin_zip,origin_country,client_name,destination_raw_line_1,destination_city,destination_state,destination_zip,destination_country,phone_number,mode,purchase_order_number,volume,handling_unit_quantity,handling_unit_type \n"
     @load.orders.sort_by{|order| order.delivery_order}.each do |order|
-      res += "#{order.deliveryDate}, #{order.deliveryShift}, #{order.originName}, #{order.originRawLine1}, #{order.originCity}, #{order.originState}, #{order.originZip}, #{order.originCountry}, #{order.clientName}, #{order.destinationRawLine1}, #{order.destinationCity}, #{order.destinationState}, #{order.destinationZip}, #{order.destinationCountry}, #{order.phoneNumber}, #{order.mode}, #{order.purchaseOrderNumber}, #{order.volume}, #{order.handlingUnitQuantity}, #{order.handlingUnitType} \n"
+      res.puts "#{order.deliveryDate}, #{order.deliveryShift}, #{order.originName}, #{order.originRawLine1}, #{order.originCity}, #{order.originState}, #{order.originZip}, #{order.originCountry}, #{order.clientName}, #{order.destinationRawLine1}, #{order.destinationCity}, #{order.destinationState}, #{order.destinationZip}, #{order.destinationCountry}, #{order.phoneNumber}, #{order.mode}, #{order.purchaseOrderNumber}, #{order.volume}, #{order.handlingUnitQuantity}, #{order.handlingUnitType} \n"
     end
-    send_data res, :filename => "#{@load.delivery_date}_#{@load.delivery_shift}.txt"
+    send_data res.string, :filename => "#{@load.delivery_date}_#{@load.delivery_shift}.txt"
   end
 
   def upload_orders

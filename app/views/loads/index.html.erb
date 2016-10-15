@@ -13,9 +13,9 @@
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>Deliverydate</th>
-      <th>Deliveryshift</th>
-      <th>User</th>
+      <th>Delivery date</th>
+      <th>Delivery shift</th>
+      <th>Driver</th>
       <th colspan="7"></th>
     </tr>
   </thead>
@@ -27,7 +27,7 @@
         <td><%= load.delivery_shift %></td>
         <td><%= load.user.name %></td>
         <% if can? :manage, Order %>
-          <td><%= link_to 'Edit Orders', load_edit_orders_path(load) %></td>
+          <td><%= link_to 'Manage Orders', load_edit_orders_path(load) %></td>
         <% end %>
         <% if can? :read, load %>
           <td><%= link_to 'Download', load_download_path(load) %></td>

@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_orders
+  before_action :set_orders, except: :update_delivery_order
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET loads/1/orders
@@ -68,6 +68,7 @@ class OrdersController < ApplicationController
   end
 
   def update_delivery_order
+    p 'alsm update_delivery_order'
     @order = Order.find(params[:id])
     @order.delivery_order_position = params[:delivery_order_position]
     @order.save

@@ -35,8 +35,6 @@
         <td><%= order.volume %></td>
         <td><%= order.handlingUnitQuantity %></td>
         <td><%= order.handlingUnitType %></td>
-        <td><%= link_to 'Show', [order.load, order] %></td>
-        <td><%= link_to 'Edit', edit_load_order_path(order.load, order) %></td>
         <td><%= link_to 'Unassign', load_order_unassign_path(order.load, order), :confirm => 'Are you sure?', :method => :delete %></td>
       </tr>
   <% end %>
@@ -79,8 +77,6 @@
         <td><%= order.volume %></td>
         <td><%= order.handlingUnitQuantity %></td>
         <td><%= order.handlingUnitType %></td>
-        <td><%= link_to 'Show', [@load, order] %></td>
-        <td><%= link_to 'Edit', edit_load_order_path(@load, order) %></td>
         <td><%= link_to 'Assign', load_order_assign_path(@load, order), :method => :post %></td>
       </tr>
   <% end %>

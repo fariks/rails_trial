@@ -3,10 +3,10 @@ Rails.application.routes.draw do
     resources :orders do
       delete 'unassign' => 'orders#unassign'
       post 'assign' => 'orders#assign'
-      post :update_delivery_order, on: :collection
     end
     get 'edit_orders' => 'loads#edit_orders'
     get 'download' => 'loads#download'
+    post 'update_delivery_order' => 'orders#update_delivery_order'
   end
 
   post 'upload_orders' => 'loads#upload_orders'

@@ -21,23 +21,23 @@
 
   <tbody>
     <% @loads.each do |load| %>
-      <tr>
-        <td><%= load.delivery_date %></td>
-        <td><%= load.delivery_shift %></td>
-        <td><%= load.user.name %></td>
-        <% if can? :manage, Order %>
-          <td><%= link_to 'Manage Orders', load_edit_orders_path(load) %></td>
-        <% end %>
-        <% if can? :read, load %>
+      <% if can? :read, load %>
+        <tr>
+          <td><%= load.delivery_date %></td>
+          <td><%= load.delivery_shift %></td>
+          <td><%= load.user.name %></td>
           <td><%= link_to 'Download', load_download_path(load) %></td>
-        <% end %>
-        <% if can? :edit, load %>
-          <td><%= link_to 'Edit', edit_load_path(load) %></td>
-        <% end %>
-        <% if can? :destroy, load %>
-          <td><%= link_to 'Destroy', load, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
+          <% if can? :manage, Order %>
+            <td><%= link_to 'Manage Orders', load_edit_orders_path(load) %></td>
+          <% end %>
+          <% if can? :edit, load %>
+            <td><%= link_to 'Edit', edit_load_path(load) %></td>
+          <% end %>
+          <% if can? :destroy, load %>
+            <td><%= link_to 'Destroy', load, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

@@ -32,11 +32,10 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     elsif user.has_role? :dispatcher
-      can :manage, Load, Order
-      #can :manage, Order
+      can :manage, Load
+      can :manage, Order
     elsif user.has_role? :driver
-      can :read, Load#, Load.with_role(:driver, user).pluck(:id)
-      #can :read, Order
+      can :read, Load, :user => { :id => user.id }
     end
   end
 end

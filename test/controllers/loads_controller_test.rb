@@ -17,7 +17,7 @@ class LoadsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create load" do
     assert_difference('Load.count') do
-      post loads_url, params: { load: { deliveryDate: @load.deliveryDate, deliveryShift: @load.deliveryShift, user_id: @load.user_id } }
+      post loads_url, params: { load: { delivery_date: @load.delivery_date, delivery_shift: @load.delivery_shift, user_id: @load.user_id } }
     end
 
     assert_redirected_to load_url(Load.last)
@@ -34,7 +34,7 @@ class LoadsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update load" do
-    patch load_url(@load), params: { load: { deliveryDate: @load.deliveryDate, deliveryShift: @load.deliveryShift, user_id: @load.user_id } }
+    patch load_url(@load), params: { load: { delivery_date: @load.delivery_date, delivery_shift: @load.delivery_shift, user_id: @load.user_id } }
     assert_redirected_to load_url(@load)
   end
 

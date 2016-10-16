@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'Back', loads_path %>
+
 <h1>Assigned orders</h1>
 
 <table class="table table-bordered table-striped" id="sortable">
@@ -16,8 +18,6 @@
     <th>Volume</th>
     <th>Handlingunitquantity</th>
     <th>Handlingunittype</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
@@ -59,8 +59,6 @@
     <th>Handlingunitquantity</th>
     <th>Handlingunittype</th>
     <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
   <% @unassignOrders.each do |order| %>
@@ -82,5 +80,4 @@
   <% end %>
 </table>
 
-<br />
-<%= link_to 'Back', loads_path %>
+

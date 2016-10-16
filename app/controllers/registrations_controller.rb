@@ -1,29 +1,14 @@
 class RegistrationsController < Devise::RegistrationsController
-  def new
-    super
-  end
 
   def create
-    resource = User.new(user_params)
-    if resource.persisted?
-      if resource.active_for_authentication?
-        set_flash_message! :notice, :signed_up
-        sign_up(resource_name, resource)
-        respond_with resource, location: after_sign_up_path_for(resource)
+    user = User.new(user_params)
+    respond_to do |format|
+      if user.save
+        format.html { redirect_to authenticated_root_path, notice: 'User was successfully created.' }
       else
-        set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
-        expire_data_after_sign_in!
-        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+        format.html { render :new }
       end
-    else
-      clean_up_passwords resource
-      set_minimum_password_length
-      respond_with resource
     end
-  end
-
-  def update
-    super
   end
 
   private

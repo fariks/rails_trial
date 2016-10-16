@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  deliveryDate: 2016-10-14
-  deliveryShift: MyString
+  delivery_date: 2016-10-14
+  delivery_shift: 0
   user: one
 
 two:
-  deliveryDate: 2016-10-14
-  deliveryShift: MyString
-  user: two
+  delivery_date: 2016-10-14
+  delivery_shift: 2
+  user: one

@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  loads: one
+  load: one
   deliveryDate: 2016-10-14
   deliveryShift: MyString
   originName: MyString
@@ -24,7 +24,7 @@ one:
   handlingUnitType: MyString
 
 two:
-  loads: two
+  load: two
   deliveryDate: 2016-10-14
   deliveryShift: MyString
   originName: MyString

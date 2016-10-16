@@ -68,7 +68,6 @@ class OrdersController < ApplicationController
   end
 
   def update_delivery_order
-    p 'alsm update_delivery_order'
     @order = Order.find(params[:id])
     @order.delivery_order_position = params[:delivery_order_position]
     @order.save
